@@ -1,6 +1,8 @@
 class RegistrationsController < ApplicationController 
 
 	before_action :set_registration, only: [:edit, :update, :destroy]
+	
+	def index
 
 	def new
 		@registration = Registration.new

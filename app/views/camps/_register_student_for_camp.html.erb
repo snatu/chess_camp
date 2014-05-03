@@ -1,0 +1,4 @@
+<%= simple_form_for @registration, html: { class: 'form' } do |f| %>
+      		<%= f.input :student_id, collection: eligible_unregistered_students(@camp) %>
+      		<%= f.input :camp_id, as: :hidden, input_html: {value: @camp.id}%>
+<% end %>
