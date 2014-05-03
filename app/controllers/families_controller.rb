@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
 
-  before_action: set_family, only: [:show, :edit, :update, :destroy]
+  before_action :set_family, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -34,7 +34,7 @@ class FamiliesController < ApplicationController
 
   def destroy
     @family.destroy
-    redirect_to location_url
+    redirect_to family_url
   end
 
   private
