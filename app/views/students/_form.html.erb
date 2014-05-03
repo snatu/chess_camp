@@ -1,0 +1,15 @@
+<%= simple_form_for(@student, html: {class: 'form_horizontal'}) do |f| %>
+
+	<h3><%= controller.action_name.capitalize %> Student</h3>
+
+	<%= f.input :family_id, collection: Family.active.alphabetical, prompt: "Select family..." %>
+	<%= f.input :first_name %>
+	<%= f.input :last_name %>
+	<%= f.input :date_of_birth %>
+	<%= f.input :rating %>
+
+	<div class="form-actions">
+		<%= f.submit nil, class: 'button radius'%>
+		<%= link_to 'Back to list of students', students_path, :class => 'button secondary radius' %>
+	</div>
+<% end %>
