@@ -4,10 +4,11 @@ class FamiliesController < ApplicationController
 
   def index
     @active_families = Family.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @inactive_families = Family.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_families = Family.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show
+    @family_students = @family.students.alphabetical
   end
 
   def new
