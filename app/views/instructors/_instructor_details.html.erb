@@ -14,6 +14,16 @@
 <strong>Biography</strong><br />
   <%= @instructor.bio.nil? ? "N/A" : @instructor.bio %><br /><br />
 
+ <strong>User Account:</strong> 
+    <% if @instructor.user.nil? %> 
+    	<em>No user account for this student</em> 
+    <% else %>
+    	<%= @instructor.user.role.capitalize %>  
+    	<p>
+    	  <b> Username: </b> <%= @instructor.user.username %>
+       </p>
+    <% end %> 
+
 
 <%= link_to "Edit this instructor", edit_instructor_path(@instructor), class: "button tiny radius" %>&nbsp;&nbsp;
 <%= link_to 'Destroy instructor', instructor_path(@instructor), data: { confirm: 'Are you sure you want to permanently remove this instructor from the system?' }, method: :delete, class: "button tiny radius alert" %>

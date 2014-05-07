@@ -9,6 +9,15 @@
     <%= f.input :active %>
     <%= f.input :bio, input_html: { rows: 6 } %>
 
+    <div class="span6">
+    <legend>Add User Account</legend>
+      <div id="user_account">
+        <%= f.simple_fields_for :user do |user_form| %>
+          <%= render :partial => "user_fields", :locals => { :f => user_form } %>
+        <% end %> 
+      </div> 
+    </div>
+
     <div class="form-actions">
       <%= f.submit nil, class: 'button radius' %>
       <%= link_to 'Back to list of instructors', instructors_path, :class => 'button secondary radius' %>
