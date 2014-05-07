@@ -6,13 +6,13 @@
 	<%=@student.family.parent_first_name %><br /><br />
 
 <strong>Age:&nbsp;&nbsp;</strong>
-	<%=@student.date_of_birth.strftime('%m/%d/%y') %> <br /><br />
+	<%=@student.date_of_birth.strftime('%m/%d/%Y') %> <br /><br />
 
 <strong>Age:&nbsp;&nbsp;</strong>
 	<%=@student.age %> <br /><br />
 
 <strong>Rating:&nbsp;&nbsp;</strong>
-	<%=@student.rating%><br /><br />
+	<%= @student.rating.zero? ? "Unrated" : @student.rating %> - <%= @student.rating %><br /><br />
 
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @student.active ? "Yes" : "No" %><br /><br />

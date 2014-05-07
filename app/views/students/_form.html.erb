@@ -5,7 +5,7 @@
 	<%= f.input :family_id, collection: Family.active.alphabetical, prompt: "Select family...", label_method: :family_name %>
 	<%= f.input :first_name %>
 	<%= f.input :last_name %>
-	<%= f.input :date_of_birth %>
+	<%= f.input :date_of_birth, label: 'Date of Birth', as: :string, input_html: {class: "avg datepicker"} %>
 	<%= f.input :rating %>
 
 	<div class="form-actions">

@@ -36,6 +36,7 @@ Feature: Manage student
     And I should see "Age"
     And I should see "16"
     And I should see "04/04/1998"
+    Then show me the page
     And I should see "1235"
     And I should see "Yes"
     And I should not see "Mary Kate"
