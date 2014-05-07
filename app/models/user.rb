@@ -23,4 +23,21 @@ class User < ActiveRecord::Base
     role.downcase.to_sym == authorized_role
   end
 
+  def self.authenticate(login, password)
+    user = find_by_username(login).try(:authenticate, password)
+  end
+
+  def encrypt_password(pass)
+    BCrypt::Engine.hash_secret(pass, password_salt)
+  end
+
+  private
+
+  def prepare_password
+    unless password.blank?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = encrypt_password(password)
+    end
+  end
+
 end
