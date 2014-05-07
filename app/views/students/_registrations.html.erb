@@ -1,0 +1,8 @@
+  <div class="panel clearfix">
+    <h5>Registrations</h5>
+    <ul class="side-nav">
+      <% @student.registrations.each do |registration| %>
+        <li><%= link_to registration.camp.curriculum.name, camp_path(registration.camp) %> (<%= registration.camp.start_date.strftime('%m/%d/%y') %>)</li>
+      <% end %>
+    </ul>
+  </div>
