@@ -18,6 +18,12 @@
 <strong>Time:&nbsp;&nbsp;</strong> 
   <%= @camp.time_slot == "am" ? "Morning" : "Afternoon" %><br /><br />
 
+<strong>Ratings Range:&nbsp;&nbsp;</strong> 
+  <%= @camp.curriculum.min_rating.zero? ? "Unrated" : @camp.curriculum.min_rating %> - <%= @camp.curriculum.max_rating %><br /><br />
+
+<strong>Registrations (<%= @camp.registrations.size%>)</strong> 
+
+
 <strong>Active?&nbsp;&nbsp;</strong>
   <%= @camp.active ? "Yes" : "No" %><br /><br />
 
