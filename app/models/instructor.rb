@@ -1,4 +1,7 @@
 class Instructor < ActiveRecord::Base
+
+  #attr_accessible :user_attributes
+
   include ChessCampHelpers
   mount_uploader :picture, PictureUploader
 
@@ -6,6 +9,8 @@ class Instructor < ActiveRecord::Base
   has_many :camp_instructors
   has_many :camps, through: :camp_instructors
   has_one :user
+
+  accepts_nested_attributes_for :user, :reject_if => lambda { |user| user[:username].blank? }
 
   # validations
   validates_presence_of :first_name, :last_name, :phone

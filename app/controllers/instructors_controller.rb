@@ -45,11 +45,12 @@ class InstructorsController < ApplicationController
   end
 
   private
+
     def set_instructor
       @instructor = Instructor.find(params[:id])
     end
 
     def instructor_params
-      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, :active)
+      params.require(:instructor).permit(:first_name, :last_name, :bio, :email, :phone, {user_attributes: [:username, :password, :password_confirmation, :role]}, :active)
     end
 end
