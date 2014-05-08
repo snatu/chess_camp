@@ -8,6 +8,9 @@ class HomeController < ApplicationController
   def contact
   end
 
+  def camp_payment
+  end
+  
   def privacy
   end
   

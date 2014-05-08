@@ -1,0 +1,42 @@
+
+
+<table class="table">
+  <tr>
+    <th></th>
+    <th width="120">Registration ID</th>
+    <th width="120">Payment Received</th>
+    <th width="120">Balance Due</th>
+    <th></th>
+  </tr>
+    <%@total = 0 %>
+<% @camp.registrations.each do |registration| %>
+  <tr>
+    <td></td>
+    <td align="center"><%= registration.id%></td>
+    <td align="center">
+    	<%if registration.payment_status == "deposit" %>
+    		<%= number_to_currency(50) %>
+        <%@total += 50 %>
+    	<%else%>
+    		<%= registration.camp.cost %>
+        <%@total += registration.camp.cost %>
+    	<%end%>
+    </td>
+    <td>
+        <%if registration.payment_status == "deposit" %>
+    		<%= number_to_currency(registration.camp.cost - 50) %>
+    	<%else%>
+    		<%= number_to_currency(0) %>
+    	<%end%>
+    </td>
+  </tr>
+<% end %>
+  <tr>
+    <td>Total</td>
+    <td> </td>
+    <td align="center"><%=number_to_currency(@total)%></td>
+    <td align="center"><%=number_to_currency((@camp.registrations.size * @camp.cost) - @total)%></td>
+    <td></td>
+  </tr>
+</table>
+

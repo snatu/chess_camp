@@ -3,6 +3,8 @@
     <!-- MAIN CONTENT GOES HERE -->
     <%= render :partial => "camp_details" %>
     <%= render partial:'register_student_for_camp' %>
+
+    <%= link_to 'Camp Payments', camp_payment_path(id: @camp.id)%>&nbsp;&nbsp;::&nbsp;&nbsp;
   </div>
 
   <div class="small-1 columns">

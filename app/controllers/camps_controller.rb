@@ -1,7 +1,7 @@
 class CampsController < ApplicationController
   authorize_resource
   #before_action :check_login, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_camp, only: [:show, :edit, :update, :destroy]
+  before_action :set_camp, only: [:show, :edit, :update, :destroy, :camp_payment]
 
   def index
     @upcoming_camps = Camp.upcoming.active.chronological.paginate(:page => params[:page]).per_page(10)
@@ -13,6 +13,9 @@ class CampsController < ApplicationController
     @instructors = @camp.instructors.alphabetical.to_a
     @students = @camp.students.alphabetical.to_a
     @registration = Registration.new
+  end
+
+  def camp_payment
   end
 
   def new
