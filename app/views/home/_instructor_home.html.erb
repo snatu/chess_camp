@@ -2,20 +2,19 @@
 <br/>
 <div class="row">
 	<div class="span4">
+	    <div class="panel clearfix">
 	  <h4>Instructor Info</h4>
 	  <%= render :partial => 'partials/user_details' %>
+	</div>
 
 	</div>
 
 	<div class="span8">
+		<div class="panel clearfix">
 	  <h4>Upcoming Camps</h4>
 	  <%= render :partial => 'partials/instructor_upcoming_camps' %>
+	</div>
 	  <br>
 	  <br>
 	</div>
-</div>
-
-<div class="form-actions">
-    <%= link_to "Edit", edit_instructor_path(current_user.instructor), :class => 'btn' %>&nbsp;&nbsp;
-    <%= link_to "Delete", instructor_path(current_user.instructor), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
 </div>
