@@ -1,0 +1,23 @@
+<h2>Hello Administrator <%= current_user.username %>! </h2>
+<br/>
+  <div class="small-7 columns">
+    <h4>User Info</h4>
+	<%= render :partial => 'partials/user_details' %>
+
+    <h4>Unpaid Registrations</h4>
+	<%= render :partial => 'partials/payment_info' %>
+  </div>
+
+  <div class="small-1 columns">
+    &nbsp;
+  </div>
+
+  <div class="small-4 columns">
+    <h4>Upcoming Camps</h4>
+
+    <%= render partial: 'partials/upcoming_camps' %>
+
+<div class="form-actions">
+    <%= link_to "Edit", edit_instructor_path(current_user.instructor), :class => 'btn' %>&nbsp;&nbsp;
+    <%= link_to "Delete", instructor_path(current_user.instructor), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

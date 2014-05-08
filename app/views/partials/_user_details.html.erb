@@ -1,0 +1,20 @@
+<p>
+  <b>Name:</b> <%= current_user.instructor.proper_name %>
+</p>
+
+<p>
+  <b>Phone:</b> <%= number_to_phone current_user.instructor.phone %>
+</p>
+<p> 
+  <b>User Role:</b> 
+    <%= current_user.role.capitalize %>  
+</p>
+
+<p>
+  <b> Email:</b>
+    <%= current_user.instructor.email %>
+</p>
+
+<p>
+  <b>Active:</b> <%= current_user.instructor.active ? "Yes" : "No" %>
+</p>

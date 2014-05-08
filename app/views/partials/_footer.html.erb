@@ -3,7 +3,13 @@
   <%= link_to 'Home', home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
   <%= link_to 'About Us', about_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
   <%= link_to 'Contact Us', contact_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
-  <%= link_to 'Privacy Policy', privacy_path %>
+  <%= link_to 'Privacy Policy', privacy_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+      <% if logged_in? %>
+        <%= link_to 'Logout', logout_path %>
+        <br>[<%= current_user.username %>:<%= current_user.role %>]
+      <% else %>
+        <%= link_to 'Login', login_path %>
+      <% end %>
   <br /><br />
   <div id="copy">
     Webmaster: <%= mail_to("profh@cmu.edu", "Prof. H", encode: "javascript") %> 

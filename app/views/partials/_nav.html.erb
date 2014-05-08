@@ -8,24 +8,29 @@
       <section class="top-bar-section">
         <ul class="left">
           <!-- options for curriculums -->
-          <li class="has-dropdown">
-            <%= link_to "Curriculums", curriculums_path %>
-            <ul class="dropdown">
-              <li><%= link_to "List Curriculums", curriculums_path %></li>
-              <li><%= link_to "Add a Curriculum", new_curriculum_path %></li>
-            </ul>
-          </li>
+          <% if current_user && current_user.role?(:admin) %>
+            <li class="has-dropdown">
+              <%= link_to "Curriculums", curriculums_path %>
+              <ul class="dropdown">
+                <li><%= link_to "List Curriculums", curriculums_path %></li>
+                <li><%= link_to "Add a Curriculum", new_curriculum_path %></li>
+              </ul>
+            </li>
+          <%end%>
 
           <!-- options for camps -->
           <li class="has-dropdown">
             <%= link_to "Camps", camps_path %>
             <ul class="dropdown">
               <li><%= link_to "List Camps", camps_path %></li>
-              <li><%= link_to "Add a Camp", new_camp_path %></li>
+              <% if current_user && current_user.role?(:admin) %>
+                <li><%= link_to "Add a Camp", new_camp_path %></li>
+              <%end%>
             </ul>
           </li>
 
           <!-- options for instructors -->
+          <% if current_user && current_user.role?(:admin) %>
           <li class="has-dropdown">
             <!-- <a href="#">Instructors</a> -->
             <%= link_to "Instructors", instructors_path %>
@@ -34,8 +39,17 @@
               <li><%= link_to "Add an Instructor", new_instructor_path %></li>
             </ul>
           </li>
+          <%end%>
+
+          <% if current_user && current_user.role?(:instructor) %>
+          <li class="has-dropdown">
+            <!-- <a href="#">Instructors</a> -->
+            <%= link_to "Instructor Profile", instructor_path(current_user.instructor) %>
+          </li>
+          <%end%>
 
           <!-- options for locations -->
+          <% if current_user && current_user.role?(:admin) %>
           <li class ="has-dropdown">
             <%= link_to "Locations", locations_path %>
             <ul class = "dropdown">
@@ -43,9 +57,11 @@
               <li><%= link_to "Add a Location", new_location_path %> </li>
             </ul>
           </li>
+          <%end%>
 
 
           <!-- options for families -->
+          <% if current_user && current_user.role?(:admin) %>
           <li class ="has-dropdown">
             <%= link_to "Families", families_path %>
             <ul class = "dropdown">
@@ -53,8 +69,10 @@
               <li><%= link_to "Add a family", new_family_path %></li>
             </ul>
           </li>
+          <%end%>
 
           <!-- options for students -->
+          <% if current_user && current_user.role?(:admin) %>
           <li class ="has-dropdown">
             <%= link_to "Students", students_path %>
             <ul class = "dropdown">
@@ -62,8 +80,11 @@
               <li><%=link_to "Add a Student", new_student_path %></li>
             </ul>
           </li>
+          <%end%>
+
 
         </ul>
       </section>
+
     </nav>
   </div>

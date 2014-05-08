@@ -1,0 +1,20 @@
+<% if Registration.deposit_only.empty? %> 
+  <em> There are no unpaid registrations </em>
+<% else %> 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Camp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Registration.deposit_only.by_student.each do |registration| %>
+      <tr>
+        <td> <%= link_to registration.student.name, student_path(registration.student) %> </td>
+        <td> <%= registration.camp.curriculum.name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
