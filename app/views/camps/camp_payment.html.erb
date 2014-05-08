@@ -35,7 +35,7 @@
     <td>Total</td>
     <td> </td>
     <td align="center"><%=number_to_currency(@total)%></td>
-    <td align="center"><%=number_to_currency((@camp.registrations.size * @camp.cost) - @total)%></td>
+    <td><%=number_to_currency((@camp.registrations.size * @camp.cost) - @total)%></td>
     <td></td>
   </tr>
 </table>
