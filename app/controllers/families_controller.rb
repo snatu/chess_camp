@@ -1,5 +1,6 @@
 class FamiliesController < ApplicationController
-
+  authorize_resource
+  #before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
   before_action :set_family, only: [:show, :edit, :update, :destroy]
 
   def index

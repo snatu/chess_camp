@@ -21,6 +21,7 @@ Feature: Authorization
 
   Scenario: Patrick is not able to update Mike's profile
     When I go to edit Mike's page
+    Then show me the page
     Then I should see "You are not authorized to take this action"
 
   Scenario: Patrick is able to add or edit locations

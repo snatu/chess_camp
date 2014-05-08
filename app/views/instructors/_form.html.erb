@@ -10,7 +10,7 @@
     <%= f.input :bio, input_html: { rows: 6 } %>
 
     <div class="span6">
-    <legend>Add User Account</legend>
+    <legend>Add/Edit User Account</legend>
       <div id="user_account">
         <%= f.simple_fields_for :user_attributes do |user_form| %>
           <%= render :partial => "user_fields", :locals => { :f => user_form } %>

@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def eligible_students(camp)
-		Student.below_rating(camp.curriculum.max_rating).at_or_above_rating(camp.curriculum.max_rating).active.alphabetical.all
+		Student.below_rating(camp.curriculum.max_rating).at_or_above_rating(camp.curriculum.min_rating).active.alphabetical.all
 	end
 
 	def eligible_unregistered_students(camp)

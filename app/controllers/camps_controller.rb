@@ -1,4 +1,6 @@
 class CampsController < ApplicationController
+  authorize_resource
+  #before_action :check_login, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_camp, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,9 +17,11 @@ class CampsController < ApplicationController
 
   def new
     @camp = Camp.new
+    authorize! :new, @camp
   end
 
   def edit
+    authorize! :update, @band
   end
 
   def create
@@ -27,6 +31,7 @@ class CampsController < ApplicationController
     else
       render action: 'new'
     end
+    authorize! :new, @camp
   end
 
   def update
@@ -35,11 +40,13 @@ class CampsController < ApplicationController
     else
       render action: 'edit'
     end
+    authorize! :update, @camp
   end
 
   def destroy
     @camp.destroy
     redirect_to camps_url, notice: "#{@camp.name} camp on #{@camp.start_date.strftime('%m/%d/%y')} was removed from the system."
+    authorize! :destroy, @band
   end
 
   private

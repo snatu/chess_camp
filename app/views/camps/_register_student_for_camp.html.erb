@@ -1,4 +1,13 @@
-<%= simple_form_for @registration, html: { class: 'form' } do |f| %>
+<%= simple_form_for @registration, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend>Register a student for this camp</legend>
       		<%= f.input :student_id, collection: eligible_unregistered_students(@camp) %>
       		<%= f.input :camp_id, as: :hidden, input_html: {value: @camp.id}%>
+      		<%= f.input :points_earned %>
+      		<%= f.input :payment_status, collection: [['Initial Deposit Only','deposit'],['Full Deposit Put In','full']], prompt: "Select payment status..." %>
+    <div class="form-actions-min">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', camp_path(@camp), :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

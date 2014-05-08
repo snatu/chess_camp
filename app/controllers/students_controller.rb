@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-
+	authorize_resource
+	#before_action :check_login, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 	before_action :set_student, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -8,6 +9,7 @@ class StudentsController < ApplicationController
 	end
 
 	def show
+		authorize! :show, @student
 		@camps_participated = @student.camps.past.chronological
 	end
 

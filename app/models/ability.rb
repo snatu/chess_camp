@@ -7,9 +7,24 @@ class Ability
 
     if user.role? :admin
         can :manage, :all
-      else
-        can :read, :all
+    elsif user.role? :instructor
+        can [:edit, :update], Instructor do |instruc|  
+          instruc.id == user.instructor_id
+        end
+        can :read, Instructor do |instruc|
+            instruc.id == user.instructor_id
+        end
+        can :read, Student do |student|
+            instruc_students = user.instructor.camps.map{|c| c.students.map(&:id)}.flatten
+            instruc_students.include? student.id
+        end
+        can :read, Camp
+    else
+        can :read, Camp
+        can :show, Location
+        can :show, Instructor 
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
