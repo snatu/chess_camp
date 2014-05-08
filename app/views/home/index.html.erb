@@ -1,7 +1,27 @@
-<% if current_user && current_user.role?(:admin) %>
-	<%= render :partial => 'admin_home' %>
-<% elsif current_user && current_user.role?(:instructor) %>
-	<%= render :partial => "instructor_home" %> 
-<% else %>
-	<%= render :partial => 'guest_home' %>
-<% end %>
+
+
+<!DOCTYPE html>
+	<html>
+		<head>
+			<style>
+				body 
+				{
+				background-image:url('/assets/0225.jpg');
+				background-size:cover;
+				background-repeat:no-repeat;
+				}
+			</style>
+		</head>
+
+		<body>
+
+			<% if current_user && current_user.role?(:admin) %>
+				<%= render :partial => 'admin_home' %>
+			<% elsif current_user && current_user.role?(:instructor) %>
+				<%= render :partial => "instructor_home" %> 
+			<% else %>
+				<%= render :partial => 'guest_home' %>
+			<% end %>
+			
+		</body>
+</html>
