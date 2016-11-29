@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% Registration.deposit_only.by_student.each do |registration| %>
+    <% @unpaid_registrations.each do |registration| %>
       <tr>
         <td> <%= link_to registration.student.name, student_path(registration.student) %> </td>
         <td> <%= registration.camp.curriculum.name%></td>
@@ -17,4 +17,7 @@
     <% end %>
   </tbody>
 </table>
+<span class="paginate">
+<%= will_paginate @unpaid_registrations, :previous_label => "Previous&nbsp;", :next_label => "Next&nbsp;"%>
+</span>
 <% end %>
